@@ -1,7 +1,12 @@
+using HotelBookingWebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container.(MVC þablonu benimsendi)
 builder.Services.AddControllersWithViews();
+
+//API ayarlarýný uygulamaya ekleyelim
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
 
 var app = builder.Build();
 
@@ -20,10 +25,7 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+app.MapDefaultControllerRoute();
 
 
 app.Run();
