@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using HotelBookingWebApp.Models;
+using HotelBookingWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelBookingWebApp.Controllers
@@ -8,13 +9,17 @@ namespace HotelBookingWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApiServices _apiServices;
+
+        public HomeController(ILogger<HomeController> logger, ApiServices apiServices)
         {
             _logger = logger;
+            _apiServices = apiServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            await _apiServices.GetAutoComplete("turkiye");
             return View();
         }
 

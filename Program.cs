@@ -1,11 +1,14 @@
 using HotelBookingWebApp.Models;
+using HotelBookingWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.(MVC þablonu benimsendi)
 builder.Services.AddControllersWithViews();
 
-//API ayarlarýný uygulamaya ekleyelim
+builder.Services.AddHttpClient<ApiServices>();
+
+//API ayarlarýný uygulamaya ekleyelim...
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
 
 var app = builder.Build();
