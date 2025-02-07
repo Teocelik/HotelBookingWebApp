@@ -17,12 +17,12 @@ namespace HotelBookingWebApp.Controllers
             _apiServices = apiServices;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            await _apiServices.GetAutoComplete("turkiye");
             return View();
         }
 
+        
         public IActionResult Privacy()
         {
             return View();

@@ -14,23 +14,23 @@ namespace HotelBookingWebApp.Services
             _httpClient = httpClient;
             _apiSettings = apiSettings.Value;
 
-            //Base adres ve headerları varsayılan olarak ayarlayalım.
+            //Base adres ve headerları ayarlayalım.
             _httpClient.BaseAddress = new Uri(_apiSettings.BaseUrl);
             _httpClient.DefaultRequestHeaders.Add("X-RapidAPI-Key", _apiSettings.ApiKey);
-            _httpClient.DefaultRequestHeaders.Add("X-RapidAPI-Host", _apiSettings.ApiHost);
+            _httpClient.DefaultRequestHeaders.Add("X-RaidAPI-Host", _apiSettings.ApiHost);
         }
 
-        //Kullanıcı bir terimi girince, o terime için anlık sorgu yaparak response dönecek sınıf oluştur.
-        public async Task<string> GetAutoComplete(string query)
+        //js dosyasındaki "autoComplete.js" içindeki js kodları ile dinamik olarak çalışır(Fetch metodu ile)
+        public async Task<string> FetchAutoCompleteResultsAsync(string query)
         {
             //request atıp response alalım()
-            var response = await _httpClient.GetAsync($"?query=hotels%2F{Uri.EscapeDataString(query)}");
-            response.EnsureSuccessStatusCode();
-
-            var icerikControl = await response.Content.ReadAsStringAsync();
-            return icerikControl;
+            var response = await _httpClient.GetAsync($"?query={Uri.EscapeDataString(query)}");
+            //var içerik = await response.Content.ReadAsStringAsync();
+            if(!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"API hatası: {response.StatusCode}");
+            }
+            return await response.Content.ReadAsStringAsync();
         }
-
-
     }
 }

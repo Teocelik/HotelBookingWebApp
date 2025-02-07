@@ -6,9 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.(MVC þablonu benimsendi)
 builder.Services.AddControllersWithViews();
 
+//geliþtirdiðimiz servisi uygulamaya dahil edelim!
 builder.Services.AddHttpClient<ApiServices>();
 
-//API ayarlarýný uygulamaya ekleyelim...
+//API ayarlarýný uygulamaya dahil edelim!
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
 
 var app = builder.Build();
