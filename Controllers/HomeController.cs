@@ -17,12 +17,13 @@ namespace HotelBookingWebApp.Controllers
             _apiServices = apiServices;
         }
 
+        
         public IActionResult Index()
         {
             return View();
         }
 
-        
+      
         public IActionResult Privacy()
         {
             return View();

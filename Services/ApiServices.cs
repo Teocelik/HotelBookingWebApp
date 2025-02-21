@@ -1,5 +1,7 @@
-﻿using HotelBookingWebApp.Models;
+﻿using HotelBookingWebApp.DTOs;
+using HotelBookingWebApp.Models;
 using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace HotelBookingWebApp.Services
 {
@@ -25,12 +27,15 @@ namespace HotelBookingWebApp.Services
         {
             //request atıp response alalım()
             var response = await _httpClient.GetAsync($"?query={Uri.EscapeDataString(query)}");
-            //var içerik = await response.Content.ReadAsStringAsync();
-            if(!response.IsSuccessStatusCode)
+
+            if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"API hatası: {response.StatusCode}");
             }
-            return await response.Content.ReadAsStringAsync();
+
+            var içerik = await response.Content.ReadAsStringAsync();
+
+            return içerik;
         }
     }
 }

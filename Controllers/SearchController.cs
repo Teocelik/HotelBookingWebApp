@@ -1,5 +1,8 @@
-﻿using HotelBookingWebApp.Services;
+﻿using HotelBookingWebApp.DTOs;
+using HotelBookingWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace HotelBookingWebApp.Controllers
 {
@@ -16,9 +19,17 @@ namespace HotelBookingWebApp.Controllers
         {
             /*burada, autoComplete.js dosyasındaki fetch fonksiyonu ile query parametresi kullanılarak
              kullanıcının girdiği her terime karşılık gelen datayı döner()*/
-            var data = await _apiService.FetchAutoCompleteResultsAsync(query);
+            var response = await _apiService.FetchAutoCompleteResultsAsync(query);
 
-            return Json(data);
+            //API'den gelen datayı map edip, AutoCompleteItemDto'ya dönüştürelim.
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // Küçük-büyük harf duyarlılığını kaldır
+            };
+
+            var autoCompleteResponse = JsonSerializer.Deserialize<RootDto>(response, options);
+
+            return Json(autoCompleteResponse);
         }
     }
 }
