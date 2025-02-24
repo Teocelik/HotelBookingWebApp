@@ -1,4 +1,4 @@
-﻿using HotelBookingWebApp.DTOs;
+﻿using HotelBookingWebApp.DTOs.SearchEndpointDtos;
 using HotelBookingWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -9,8 +9,8 @@ namespace HotelBookingWebApp.Controllers
     [Route("api/[controller]")]
     public class SearchController : Controller
     {
-        private readonly ApiServices _apiService;
-        public SearchController(ApiServices apiServices)
+        private readonly AutoCompleteApiService _apiService;
+        public SearchController(AutoCompleteApiService apiServices)
         {
             _apiService = apiServices;
         }

@@ -9,9 +9,9 @@ namespace HotelBookingWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly ApiServices _apiServices;
+        private readonly AutoCompleteApiService _apiServices;
 
-        public HomeController(ILogger<HomeController> logger, ApiServices apiServices)
+        public HomeController(ILogger<HomeController> logger, AutoCompleteApiService apiServices)
         {
             _logger = logger;
             _apiServices = apiServices;

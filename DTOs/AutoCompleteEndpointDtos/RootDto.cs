@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace HotelBookingWebApp.DTOs
+namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
     //Bu class, API'den dönen data'yı temsil edecek!
     [JsonSerializable(typeof(RootDto))]

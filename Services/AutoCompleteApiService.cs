@@ -5,13 +5,13 @@ using System.Text.Json;
 
 namespace HotelBookingWebApp.Services
 {
-    public class ApiServices
+    public class AutoCompleteApiService
     {
         //API kullanmak için field(alan) (HttpClient ve ApiSettings sınıflarını) fields olarak ekleyelim
         private readonly HttpClient _httpClient;
-        private readonly ApiSettings _apiSettings;
+        private readonly AutoCompleteEndpointSetting _apiSettings;
 
-        public ApiServices(HttpClient httpClient, IOptions<ApiSettings> apiSettings)
+        public AutoCompleteApiService(HttpClient httpClient, IOptions<AutoCompleteEndpointSetting> apiSettings)
         {
             _httpClient = httpClient;
             _apiSettings = apiSettings.Value;

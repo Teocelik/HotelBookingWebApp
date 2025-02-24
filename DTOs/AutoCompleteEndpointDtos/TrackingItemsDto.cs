@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace HotelBookingWebApp.DTOs
+namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
     public class TrackingItemsDto
     {

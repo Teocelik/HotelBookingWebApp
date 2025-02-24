@@ -6,11 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.(MVC þablonu benimsendi)
 builder.Services.AddControllersWithViews();
 
-//geliþtirdiðimiz servisi uygulamaya dahil edelim!
-builder.Services.AddHttpClient<ApiServices>();
+//geliþtirdiðimiz servisi uygulamaya dahil edelim!(httpClient'e tür olarak servisimizi verelim)
+builder.Services.AddHttpClient<AutoCompleteApiService>();
 
-//API ayarlarýný uygulamaya dahil edelim!
-builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
+//AutoComplete Endpoint ayarlarýný uygulamaya dahil edelim!(API)
+builder.Services.Configure<AutoCompleteEndpointSetting>(builder.Configuration.GetSection("AutoCompleteApiSettings"));
+
+//Search Endpoint ayarlarýný uygulamaya dahil edelim!(API)
+builder.Services.Configure<SearchEndpointSetting>(builder.Configuration.GetSection("SearchApiSettings"));
 
 var app = builder.Build();
 
