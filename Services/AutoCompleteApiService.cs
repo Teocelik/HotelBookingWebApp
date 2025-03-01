@@ -33,9 +33,9 @@ namespace HotelBookingWebApp.Services
                 throw new Exception($"API hatası: {response.StatusCode}");
             }
 
-            var içerik = await response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync();
 
-            return içerik;
+            return content;
         }
     }
 }
