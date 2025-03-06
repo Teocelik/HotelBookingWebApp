@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 
 //geliþtirdiðimiz servisi uygulamaya dahil edelim!(httpClient'e tür olarak servisimizi verelim)
 builder.Services.AddHttpClient<AutoCompleteApiService>();
+builder.Services.AddHttpClient<SearchApiService>();
 
 //AutoComplete Endpoint ayarlarýný uygulamaya dahil edelim!(API)
 builder.Services.Configure<AutoCompleteEndpointSetting>(builder.Configuration.GetSection("AutoCompleteApiSettings"));

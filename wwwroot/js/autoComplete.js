@@ -10,7 +10,7 @@ let debounceTimer = null;
 
 async function fetchAutoComplete(query) {
     try {
-        const response = await fetch(`/api/Search/autoComplete?query=${encodeURIComponent(query)}`);
+        const response = await fetch(`/api/AutoComplete/autoComplete?query=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error(`API error: ${response.status}`);
         }
@@ -53,13 +53,25 @@ function renderResults(response) {
 
     // Add click handlers to results
     document.querySelectorAll('#autocompleteResults > div').forEach(div => {
-        div.addEventListener('click', () => {
+        div.addEventListener('click', async () => {
             const geoId = div.dataset.geoId;
             if (geoId) {
                 searchBox.value = div.querySelector('.text-base').textContent.trim();
                 resultsContainer.innerHTML = '';
                 // You can handle the selection here, e.g., navigate to a details page
-                console.log('Selected location with geoId:', geoId);
+                try
+                {
+                    const response = await fetch(`/api/search/search?geoId=${geoId}`);
+                    if (!response.ok)
+                    {
+                        throw new Error(`API Hatası: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    console.log('API Yanıtı:', data);
+                } catch (error)
+                {
+                    console.error('API isteği başarısız:', error);
+                }
             }
         });
     });
