@@ -27,7 +27,7 @@ namespace HotelBookingWebApp.Controllers
                 PropertyNameCaseInsensitive = true // Küçük-büyük harf duyarlılığını kaldır
             };
 
-            var autoCompleteResponse = JsonSerializer.Deserialize<RoottDto>(response, options);
+            var autoCompleteResponse = JsonSerializer.Deserialize<RootDto>(response, options);
 
             return Json(autoCompleteResponse);
         }

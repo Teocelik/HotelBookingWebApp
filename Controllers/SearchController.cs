@@ -1,6 +1,8 @@
-﻿using HotelBookingWebApp.Services;
+﻿using HotelBookingWebApp.DTOs.SearchEndpointDtos;
+using HotelBookingWebApp.Services;
 using HotelBookingWebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace HotelBookingWebApp.Controllers
 {
@@ -23,7 +25,15 @@ namespace HotelBookingWebApp.Controllers
             DateTime checkOut = model.CheckOut ?? DateTime.Now.AddDays(2);
             
             var response = await _searchApiService.FetchSearchResultsAsync(geoId, checkIn.ToString("yyyy-MM-dd"), checkOut.ToString("yyyy-MM-dd"));
-            return Json(response);
+
+            //API'den gelen datayı map edip, SearchResponseDto'ya dönüştürelim.
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // Küçük-büyük harf duyarlılığını kaldır
+            };
+
+            var searchResponse = JsonSerializer.Deserialize<SearchRootDto>(response, options);
+            return Json(searchResponse);
         }
     }
 }

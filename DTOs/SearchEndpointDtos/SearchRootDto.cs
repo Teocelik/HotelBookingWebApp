@@ -2,12 +2,12 @@
 
 namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
-    //Bu class, API'den dönen data'yı temsil edecek!
-    [JsonSerializable(typeof(RootDto))]
-    public class RootDto
+    //Search endpointinden dönen data'yı temsil edecek class!
+    [JsonSerializable(typeof(SearchRootDto))]
+    public class SearchRootDto
     {
         [JsonPropertyName("data")]
-        public List<AutoCompleteItemDto>? Data { get; set; }
+        public SearchItemDto? Data { get; set; }
         [JsonPropertyName("status")]
         public bool Status { get; set; }
         [JsonPropertyName("message")]
