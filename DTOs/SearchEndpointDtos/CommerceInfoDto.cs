@@ -4,7 +4,7 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
     public class CommerceInfoDto
     {
-        [JsonPropertyName("string")]
-        public PriceForDisplayDto? Price { get; set; }
+        [JsonPropertyName("priceForDisplay")]
+        public PriceForDisplayDto? PriceForDisplay { get; set; }
     }
 }

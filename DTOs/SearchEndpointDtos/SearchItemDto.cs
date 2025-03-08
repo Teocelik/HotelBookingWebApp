@@ -4,7 +4,6 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
     public class SearchItemDto
     {
-
         public List<HotelDto>? Hotels { get; set; }
     }
 }

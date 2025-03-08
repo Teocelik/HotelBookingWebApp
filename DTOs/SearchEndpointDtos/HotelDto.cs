@@ -10,7 +10,7 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
         //Otel görseli
 
         //Otel fiyatı
-        [JsonPropertyName("string")]
-        public PriceForDisplayDto? Price { get; set; }
+        [JsonPropertyName("commerceInfo")]
+        public CommerceInfoDto? CommerceInfo { get; set; }
     }
 }
