@@ -59,19 +59,21 @@ function renderResults(response) {
                 searchBox.value = div.querySelector('.text-base').textContent.trim();
                 resultsContainer.innerHTML = '';
                 // You can handle the selection here, e.g., navigate to a details page
-                try
-                {
-                    const response = await fetch(`/api/search/search?geoId=${geoId}`);
-                    if (!response.ok)
-                    {
-                        throw new Error(`API Hatası: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    console.log('API Yanıtı:', data);
-                } catch (error)
-                {
-                    console.error('API isteği başarısız:', error);
-                }
+                //try
+                //{
+                //    const response = await fetch(`/api/search/search?geoId=${geoId}`);
+                //    if (!response.ok)
+                //    {
+                //        throw new Error(`API Hatası: ${response.status}`);
+                //    }
+                //    const data = await response.json();
+                //    console.log('API Yanıtı:', data);
+                //} catch (error)
+                //{
+                //    console.error('API isteği başarısız:', error);
+                //}
+
+                window.location.href = `/Search/Search`;
             }
         });
     });

@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace HotelBookingWebApp.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     public class SearchController : Controller
     {
         private readonly SearchApiService _searchApiService;
@@ -14,8 +14,8 @@ namespace HotelBookingWebApp.Controllers
         {
             _searchApiService = searchApiService;
         }
-        [HttpGet("search")]
-        public async Task<IActionResult> GetSearchResult([FromQuery] int geoId, ReservationViewModel? model)
+        //[HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] int geoId, ReservationViewModel? model)
         {
             //NOT: AutoComplete endpointi ile API'den gelen geoId değerini js. ile bu endpoint'e gönderdim.
 
@@ -33,7 +33,7 @@ namespace HotelBookingWebApp.Controllers
             };
 
             var searchResponse = JsonSerializer.Deserialize<SearchRootDto>(response, options);
-            return Json(searchResponse);
+            return View(searchResponse);
         }
     }
 }

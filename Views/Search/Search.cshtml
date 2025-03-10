@@ -1,0 +1,32 @@
+﻿@model List<HotelBookingWebApp.DTOs.SearchEndpointDtos.HotelDto>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Results</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Otel Adı</th>
+                <th>Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model)
+            {
+                <tr>
+                    <td>@hotel.HotelName</td>
+                    <td>@hotel.CommerceInfo?.PriceForDisplay?.Price ?? "N/A"</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Sonuç bulunamadı.</p>
+}

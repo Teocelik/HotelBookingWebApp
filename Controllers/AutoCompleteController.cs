@@ -31,5 +31,10 @@ namespace HotelBookingWebApp.Controllers
 
             return Json(autoCompleteResponse);
         }
+
+        public IActionResult ress()
+        {
+            return View();
+        }
     }
 }
