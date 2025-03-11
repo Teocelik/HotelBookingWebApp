@@ -33,7 +33,8 @@ namespace HotelBookingWebApp.Controllers
             };
 
             var searchResponse = JsonSerializer.Deserialize<SearchRootDto>(response, options);
-            return View(searchResponse);
+            var list = searchResponse?.Data?.Hotels ?? new List<HotelDto>();
+            return View(list);
         }
     }
 }

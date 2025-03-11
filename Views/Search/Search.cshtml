@@ -1,5 +1,4 @@
 ﻿@model List<HotelBookingWebApp.DTOs.SearchEndpointDtos.HotelDto>
-
 @{
     ViewData["Title"] = "Search";
 }
@@ -19,7 +18,7 @@
             @foreach (var hotel in Model)
             {
                 <tr>
-                    <td>@hotel.HotelName</td>
+                    <td>@hotel.CardTitle?.HotelName</td>
                     <td>@hotel.CommerceInfo?.PriceForDisplay?.Price ?? "N/A"</td>
                 </tr>
             }
