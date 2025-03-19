@@ -12,5 +12,6 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
         public bool Status { get; set; }
         [JsonPropertyName("message")]
         public string? Message { get; set; }
+        
     }
 }

@@ -34,6 +34,7 @@ namespace HotelBookingWebApp.Controllers
 
             var searchResponse = JsonSerializer.Deserialize<SearchRootDto>(response, options);
             var list = searchResponse?.Data?.Hotels ?? new List<HotelDto>();
+          
             return View(list);
         }
     }

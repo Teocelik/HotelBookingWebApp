@@ -52,28 +52,42 @@ function renderResults(response) {
     lucide.createIcons();
 
     // Add click handlers to results
+    //document.querySelectorAll('#autocompleteResults > div').forEach(div => {
+    //    div.addEventListener('click', async () => {
+    //        const geoId = div.dataset.geoId;
+    //        if (geoId) {
+    //            searchBox.value = div.querySelector('.text-base').textContent.trim();
+    //            resultsContainer.innerHTML = '';
+    //            // You can handle the selection here, e.g., navigate to a details page
+    //            try
+    //            {
+    //                const response = await fetch(`/search/search?geoId=${geoId}`);
+    //                if (!response.ok)
+    //                {
+    //                    throw new Error(`API Hatası: ${response.status}`);
+    //                }
+    //                const data = await response.json();
+    //                console.log('API Yanıtı:', data);
+    //            } catch (error)
+    //            {
+    //                console.error('API isteği başarısız:', error);
+    //            }
+
+    //            window.location.href = `/Search/Search`;
+    //        }
+    //    });
+    //});
     document.querySelectorAll('#autocompleteResults > div').forEach(div => {
-        div.addEventListener('click', async () => {
+        div.addEventListener('click', () => {
             const geoId = div.dataset.geoId;
             if (geoId) {
+                // Seçilen değeri inputa yaz
                 searchBox.value = div.querySelector('.text-base').textContent.trim();
+                // Sonuç container'ını boşalt
                 resultsContainer.innerHTML = '';
-                // You can handle the selection here, e.g., navigate to a details page
-                try
-                {
-                    const response = await fetch(`/search/search?geoId=${geoId}`);
-                    if (!response.ok)
-                    {
-                        throw new Error(`API Hatası: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    console.log('API Yanıtı:', data);
-                } catch (error)
-                {
-                    console.error('API isteği başarısız:', error);
-                }
 
-                window.location.href = `/Search/Search`;
+                // Yönlendirme yaparak Search view'ini çağır:
+                window.location.href = `/Search/Search?geoId=${geoId}`;
             }
         });
     });
