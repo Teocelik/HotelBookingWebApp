@@ -9,7 +9,7 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
         public CardTitleDto? CardTitle { get; set; }
         //Otel görselleri tutan liste
         [JsonPropertyName("cardPhotos")]
-        public List<CardPhotoDto>? CradPhotos { get; set; }
+        public List<CardPhotoDto>? CardPhotos { get; set; }
         //Otel fiyatı
         [JsonPropertyName("commerceInfo")]
         public CommerceInfoDto? CommerceInfo { get; set; }

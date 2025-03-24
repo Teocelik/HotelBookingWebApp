@@ -2,7 +2,7 @@
 
 namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
 {
-    public class imageDto
+    public class ImageDto
     {
         [JsonPropertyName("urlTemplate")]
         public string? UrlTemplate { get; set; }
