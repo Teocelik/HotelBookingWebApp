@@ -18,4 +18,6 @@ Bu projeyi geliştirerek:
 
 ## 📸 Ekran Görüntüleri  
 ![image](https://github.com/user-attachments/assets/6b5d3ea8-bc2c-47ce-a329-9786dfd0b824)
+![image](https://github.com/user-attachments/assets/27b56e08-5b95-4d1f-99ba-14884b0038fe)
+
 
