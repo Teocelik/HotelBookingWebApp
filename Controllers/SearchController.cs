@@ -14,14 +14,14 @@ namespace HotelBookingWebApp.Controllers
             _searchApiService = searchApiService;
         }
         
-        public async Task<IActionResult> Search([FromQuery] int geoId, ReservationViewModel? model)
+        public async Task<IActionResult> Search([FromQuery] int geoId, ReservationViewModel? viewModel)
         {
             //NOT: AutoComplete endpointi ile API'den gelen geoId değerini js. ile bu endpoint'e gönderdim.
 
             /*Kullanıcı, CheckIn ve CheckOut tarihleri girmediği durumlarda deafult olarak
            * şimdiki tarihten iki gün sonrasını alsın.*/
-            DateTime checkIn = model?.CheckIn ?? DateTime.Now.AddDays(1);
-            DateTime checkOut = model?.CheckOut ?? DateTime.Now.AddDays(2);
+            DateTime checkIn = viewModel?.CheckIn ?? DateTime.Now.AddDays(1);
+            DateTime checkOut = viewModel?.CheckOut ?? DateTime.Now.AddDays(2);
             
             var response = await _searchApiService.FetchSearchResultsAsync(geoId, checkIn.ToString("yyyy-MM-dd"), checkOut.ToString("yyyy-MM-dd"));
 
