@@ -13,17 +13,22 @@ namespace HotelBookingWebApp.Controllers
         {
             _searchApiService = searchApiService;
         }
-        
-        public async Task<IActionResult> Search([FromQuery] int geoId, ReservationViewModel? viewModel)
+
+        public async Task<IActionResult> Search(ReservationViewModel? viewModel)
         {
             //NOT: AutoComplete endpointi ile API'den gelen geoId değerini js. ile bu endpoint'e gönderdim.
 
             /*Kullanıcı, CheckIn ve CheckOut tarihleri girmediği durumlarda deafult olarak
            * şimdiki tarihten iki gün sonrasını alsın.*/
+
+            int geoId = viewModel.GeoId;
             DateTime checkIn = viewModel?.CheckIn ?? DateTime.Now.AddDays(1);
             DateTime checkOut = viewModel?.CheckOut ?? DateTime.Now.AddDays(2);
-            
-            var response = await _searchApiService.FetchSearchResultsAsync(geoId, checkIn.ToString("yyyy-MM-dd"), checkOut.ToString("yyyy-MM-dd"));
+            int adult = viewModel?.Adult ?? 0;
+            int children = viewModel?.Kid ?? 0;
+
+            var response = await _searchApiService.FetchSearchResultsAsync(geoId, checkIn.ToString("yyyy-MM-dd"),
+                checkOut.ToString("yyyy-MM-dd"), adult, children);
 
             //API'den gelen datayı map edip, SearchResponseDto'ya dönüştürelim.
             var options = new JsonSerializerOptions
@@ -32,9 +37,9 @@ namespace HotelBookingWebApp.Controllers
             };
 
             var searchResponse = JsonSerializer.Deserialize<SearchRootDto>(response, options);
-            var list = searchResponse?.Data?.Hotels ?? new List<HotelDto>();
-          
-            return View(list);
+            viewModel.Hotels = searchResponse?.Data?.Hotels ?? new List<HotelDto>();
+
+            return View(viewModel);
         }
     }
 }

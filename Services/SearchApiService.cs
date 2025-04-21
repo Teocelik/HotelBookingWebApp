@@ -20,10 +20,10 @@ namespace HotelBookingWebApp.Services
         }
 
         //Search işlemi sonrası gelecek olan data'yı karşılayalım
-        public async Task<string> FetchSearchResultsAsync(int geoId, string checkIn, string checkOut)
+        public async Task<string> FetchSearchResultsAsync(int geoId, string checkIn, string checkOut, int adult, int child)
         {
             //request atalım
-            var response = await _httpClient.GetAsync($"?geoId={geoId}&checkIn={checkIn}&checkOut={checkOut}");
+            var response = await _httpClient.GetAsync($"?geoId={geoId}&checkIn={checkIn}&checkOut={checkOut}&adults={adult}&children={child}");
 
             if(!response.IsSuccessStatusCode)
             {

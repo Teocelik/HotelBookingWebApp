@@ -81,13 +81,17 @@ function renderResults(response) {
         div.addEventListener('click', () => {
             const geoId = div.dataset.geoId;
             if (geoId) {
-                // Seçilen değeri inputa yaz
+
+                //Arama kutusuna şehir adını yaz
                 searchBox.value = div.querySelector('.text-base').textContent.trim();
                 // Sonuç container'ını boşalt
                 resultsContainer.innerHTML = '';
 
                 // Yönlendirme yaparak Search view'ini çağır:
                 window.location.href = `/Search/Search?geoId=${geoId}`;
+
+                // HIDDEN input'a geoId'yi yaz
+                document.getElementById("geoIdInput").value = geoId;
             }
         });
     });
