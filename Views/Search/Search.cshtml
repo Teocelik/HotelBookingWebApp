@@ -162,19 +162,13 @@
                                     </div>
                                 }
                             </div>
-                            @* <button class="carousel-control-prev" type="button" data-bs-target="#carousel-@hotel.CardTitle?.HotelName" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-@hotel.CardTitle?.HotelName" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button> *@
+                            
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@hotel.CardTitle?.HotelName</h5>
                             <p class="card-text">@hotel.CommerceInfo?.PriceForDisplay?.Price / night</p>
-                            <a href="#" class="btn btn-primary">View Deal</a>
+                            <a href="@hotel.CommerceInfo?.Cta?.ExternalUrl" class="btn btn-primary" target="_blank">View Deal</a>
+
                         </div>
                     </div>
                 </div>

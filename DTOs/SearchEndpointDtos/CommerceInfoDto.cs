@@ -6,5 +6,8 @@ namespace HotelBookingWebApp.DTOs.SearchEndpointDtos
     {
         [JsonPropertyName("priceForDisplay")]
         public PriceForDisplayDto? PriceForDisplay { get; set; }
+
+        [JsonPropertyName("cta")]
+        public CtaDto? Cta { get; set; }
     }
 }

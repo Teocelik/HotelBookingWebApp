@@ -40,6 +40,9 @@ namespace HotelBookingWebApp.Controllers
             viewModel.Hotels = searchResponse?.Data?.Hotels ?? new List<HotelDto>();
 
             return View(viewModel);
+
+
+            /*ViewDeal butonu : cta içindeki external url sine yönlendiriyor*/
         }
     }
 }
