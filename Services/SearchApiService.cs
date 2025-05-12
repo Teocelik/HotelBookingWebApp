@@ -9,6 +9,7 @@ namespace HotelBookingWebApp.Services
         //fields
         private readonly HttpClient _httpClient;
         private readonly SearchEndpointSetting _searchEndpointSetting;
+        //constructor
         public SearchApiService(HttpClient httpClient, IOptions<SearchEndpointSetting> searchEndpointSetting)
         {
             _httpClient = httpClient;
